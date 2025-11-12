@@ -1,0 +1,25 @@
+xdef main():
+    print("Welcome to the Expense Tracker!")
+    print("Type 'done' when you are finished adding expenses.\n")
+
+    expenses = {}
+    while True:
+        item = input("Enter an expense name (or 'done' to finish): ").strip()
+        if item.lower() == "done":
+            break
+        try:
+            cost = float(input(f"Enter the cost for {item}: $"))
+            expenses[item] = cost
+        except ValueError:
+            print("Please enter a valid number for cost.")
+    
+    print("\n----- Expense Summary -----")
+    total = sum(expenses.values())
+    for item, cost in expenses.items():
+        print(f"{item}: ${cost:.2f}")
+    print("----------------------------")
+    print(f"Total Spent: ${total:.2f}")
+    print("----------------------------")
+
+if __name__ == "__main__":
+    main()
